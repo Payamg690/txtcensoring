@@ -26,9 +26,10 @@ def alice2(request):
             p = NachrichtForm(request.POST)
             source = str(p)
             sr1 = bs(source, "lxml").textarea.string
+            print sr1
             sr2 = censorTextFinal(sr1)
-            txt = bs(sr2, "lxml").p.string
-            return render(request, 'alice2.html', {'form': p, 'pssform': ps, 'didi': txt})
+            #txt = bs(sr2, "lxml").p.string
+            return render(request, 'alice2.html', {'form': p, 'pssform': ps, 'didi': sr2})
         elif '_encrypt' in request.POST:
             p = NachrichtForm(request.POST)
             if p.is_valid():
