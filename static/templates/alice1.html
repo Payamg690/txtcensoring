@@ -1,0 +1,9 @@
+{% extends 'base.html'%}
+{% block title %}alice1{% endblock %}
+  {% block content %}
+  <div class="jumbotron">
+  	<p class="lead">Möchten Sie eine sichere E-Mail verschicken, aber nur einzelne Textbausteine verschlüsseln?</p>
+	<p class="lead">Dieser Service ermöglicht es Ihnen Teile ihres Textes zu zensieren und somit unlesbar für Dritte zu machen</p>
+	<p class="lead">Wir generieren automatisch ein sinnvolles Passwort, das Sie dem Empänger zukommen lassen müssen, so dass er die geschützten Textteile wieder entschlüsseln kann.</p>        <p><a class="btn btn-lg btn-success" href=" {% url 'alice2' %}" role="button" >E-Mail zensieren</a></p>
+  </div>
+{% endblock %}

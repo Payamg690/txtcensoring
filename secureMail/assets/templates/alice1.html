@@ -1,0 +1,23 @@
+{% extends 'base.html'%}
+{% block title %}alice1{% endblock %}
+  {% block content %}
+  {% load static %}
+  <div class="jumbotron">
+  	<p class="lead">Möchten Sie eine sichere E-Mail verschicken, aber nur einzelne Textbausteine verschlüsseln?</p>
+	<p class="lead">Dieser Service ermöglicht es Ihnen Teile ihres Textes zu zensieren und somit unlesbar für Dritte zu machen</p>
+	<p class="lead">Zensurprozess:</p>
+	<ol class="text-left">
+        <li>Wählen Sie den Betreff Ihrer Email aus.</li>
+        <li>Schreiben Sie den Text und markieren Sie die Bereiche, die Sie für den Dritte unlesbar machen wollen, mit dem Knopf <img id="strikethrough"  src="{% static "images/strikethrough.png" %}" height="15"/> (strikethrough).</li>
+        <li>Geben Sie als nächstes Ihre Email-Adresse ein. Wir brauchen Ihre E-Mail-Adresse falls wir Ihnen ein verlorenes Passwort wieder zur Verfügung stellen sollen.</li>
+        <li>Drucken Sie anschliessen auf dem Knopf „zensieren“.</li>
+        <li>Danach wird automatisch ein Passwort erzeugt, das dem Empfänger zur Entschlüsselung des geschutzten Textes mitgeteilt werden soll.</li>
+<p class="lead">Bitte beachten Sie, dass dieser Service nur ein Verschlüsselungsprozess ist. Zum Versenden des verschlüsselten Inhalts benutzen Sie Ihr gewöhnliches Email-Programm und schicken Sie den zensierten Text und den dazugehörigen Link dem Empfänger zu.
+</p>  
+        <li>Abschließend drücken Sie auf dem Knopf Verschlüsseln.</li>
+        <li>Sie erhalten auf dem Bildschirm eine Erfolgsmeldung des Verschlüsselungsprozesses und werden dazu aufgefordert dem Empfänger das Passwort durch einen sicheren Weg (z.B. Telefon) mitzuteilen.</li>
+    </ol>
+     
+	<p><a class="btn btn-lg btn-success" href=" {% url 'alice2' %}" role="button" >E-Mail zensieren</a></p>
+  </div>
+{% endblock %}

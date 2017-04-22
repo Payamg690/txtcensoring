@@ -1,0 +1,20 @@
+{% extends 'base.html'%}
+{% block title %}bob1{% endblock %}
+
+{% block content %}
+   <div class="jumbotron">
+        <p class="lead">Sie haben eine zensierte E-Mail erhalten. Bitte geben Sie hier das Passwort zum entschlüsseln ein. Das Passwort erhalten Sie vom Sender dieser E-Mail.  </p>
+       <p style="color: red">{{ error }}</p>
+       <form action=""  method="post">
+    {% csrf_token %}
+        <div class="form-group">
+            </br>
+            {{kform}}
+            </br>
+             </br>
+            <button  type="submit" value="OK" class="btn btn-lg btn-success">weiter</button>
+            <!--<p><a class="btn btn-lg btn-success" href="bob2.html" role="button">weiter</a></p>-->
+        </div>
+     </form>
+    </div>
+{% endblock %}

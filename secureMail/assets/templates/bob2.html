@@ -1,0 +1,19 @@
+{% extends 'base.html'%}
+{% block title %}alice1{% endblock %}
+{% block content %}
+
+
+  <div class="form-group">
+  <label >Betreff :</label></br>
+      {{ btrf | safe }}
+  </div></br>
+  <label >Nachricht :</label></br>
+    {{ msg | safe }}
+  </br>
+  <div class="jumbotron">
+  <p style="color:ForestGreen ; font-Style:oblique">Wenn Sie an automatische Verschlüsselung Ihrer Emails interessiert sind und auf Sicherheit und Schutz Ihrer Daten Wert legen, nutzen Sie unseren Email-Service unter folgenden Links.</p>
+  <a href="https://play.google.com/store/apps/details?id=com.fsck.k9&hl=de" target="_blank"><img src="../static/images/logo.png" height="50"/>K-9 Mail</a>
+  </br>
+  <a href="https://play.google.com/store/apps/details?id=org.sufficientlysecure.keychain&hl=de" target="_blank"><img src="../static/images/openpgp.png" height="50"/>OpenKeychain: Easy PGP</a>
+   </div>
+{% endblock %}

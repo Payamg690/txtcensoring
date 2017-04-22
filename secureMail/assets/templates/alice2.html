@@ -1,0 +1,51 @@
+{% extends 'base.html'%}   <!-- use base muster -->
+{% block title %}alice2{% endblock %}
+ {% block content %}
+<form action="" method="post">
+    {% load static %}
+    {% csrf_token %}
+    <label for="{{form.Betreff.id_for_label}}">Betreff :</label>
+    <img id="imgBetreffHelp"  data-toggle="tooltip" title="Geben Sie hier Ihren Betreff ein" src="{% static "images/1481561122_Help_and_Support.png" %}" height="25"/>
+   {{form.Betreff}}
+    </br>       
+    </br>
+    <label for="{{form.Nachricht.id_for_label}}">Nachricht :</label>
+    <img id="imgNachrichtHelp"  data-toggle="tooltip" title="Geben Sie hier Ihre Nachricht ein. Zum zensieren markieren Sie bitte die entsprechenden Textstelle und drucken Sie unter dem Nachrichtenfeld auf zensieren" src="{% static "images/1481561122_Help_and_Support.png" %}" height="25"/>
+    {{form.Nachricht}}{{form.media}}
+    </br>
+    </br>
+    <label for="{{form.Email.id_for_label}}">Email-Adresse :</label>
+    <img id="imgEmailHelp" data-toggle="tooltip" title="Wir brauchen Ihre E-Mail-Adresse falls wir Ihren ein verlorenes Passwort wieder zur Verfügung stellen sollen" src="{% static "images/1481561122_Help_and_Support.png" %}" height="25"/>
+    {{form.Email}}
+    </br>
+    </br>
+    <input type="submit" style="float: right"  class="btn btn-primary" value="zensieren" name="_censor" onclick='Javascript:checkEmail();'/>
+    </br>
+    </br>
+    {{didi}}
+    {{ link | safe }}
+    </br>
+    </br>
+    <label for="{{form.Passwort.id_for_label}}">Passwort :  </label>
+    <img id="imgPasswortHelp" data-toggle="tooltip" title="Behandeln Sie dieses Passwort vertraulich.Der Empfänger der Mail benötigt das Passwort zum entschlüsseln des zensierten Textes." src="{% static "images/1481561122_Help_and_Support.png" %}" height="25"/>
+   <input type= "text" class="form-control" value="{{pssform}}">
+    </br>
+
+    <input type="submit" style="float: right"  class="btn btn-primary" value="Verschlüsseln" name="_encrypt" onclick='Javascript:checkEmail();'/>
+    </br>
+    </br>
+</form>
+<script language="javascript">
+
+function checkEmail() {
+
+    var email = document.getElementById('{{ form.Email.id_for_label }}');
+    var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+    if (!filter.test(email.value)) {
+        alert('Please provide a valid email address');
+        email.focus;
+        return false;
+    }
+}</script>
+{% endblock %}
