@@ -1,6 +1,25 @@
 {% extends 'base.html'%}   <!-- use base muster -->
 {% block title %}alice2{% endblock %}
  {% block content %}
+
+
+
+{% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+    {% endfor %}
+{% endif %}
+
+
 <form action="" method="post">
     {% load static %}
     {% csrf_token %}
@@ -19,7 +38,7 @@
     {{form.Email}}
     </br>
     </br>
-    <input type="submit" style="float: right"  class="btn btn-primary" value="zensieren" name="_censor" onclick='Javascript:checkEmail();'/>
+    <input type="submit" style="float: right"  class="btn btn-primary" value="zensieren" name="_censor" /> {# onclick='Javascript:checkEmail();' #}
     </br>
     </br>
     {{didi}}
@@ -31,7 +50,7 @@
    <input type= "text" class="form-control" value="{{pssform}}">
     </br>
 
-    <input type="submit" style="float: right"  class="btn btn-primary" value="Verschlüsseln" name="_encrypt" onclick='Javascript:checkEmail();'/>
+    <input type="submit" style="float: right"  class="btn btn-primary" value="Verschlüsseln" name="_encrypt" />
     </br>
     </br>
 </form>
