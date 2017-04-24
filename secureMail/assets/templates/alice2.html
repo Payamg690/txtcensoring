@@ -2,9 +2,9 @@
 {% block title %}alice2{% endblock %}
  {% block content %}
 
-
-
-{% if form.errors %}
+ 
+ 
+ {% if form.errors %}
     {% for field in form %}
         {% for error in field.errors %}
             <div class="alert alert-danger">
@@ -45,12 +45,12 @@
     {{ link | safe }}
     </br>
     </br>
-    <label for="{{form.Passwort.id_for_label}}">Passwort :  </label>
-    <img id="imgPasswortHelp" data-toggle="tooltip" title="Behandeln Sie dieses Passwort vertraulich.Der Empfänger der Mail benötigt das Passwort zum entschlüsseln des zensierten Textes." src="{% static "images/1481561122_Help_and_Support.png" %}" height="25"/>
-   <input type= "text" class="form-control" value="{{pssform}}">
-    </br>
-
-    <input type="submit" style="float: right"  class="btn btn-primary" value="Verschlüsseln" name="_encrypt" />
+{#    <label for="{{form.Passwort.id_for_label}}">Passwort :  </label> {{warnung}}#}
+{#    <img id="imgPasswortHelp" data-toggle="tooltip" title="Behandeln Sie dieses Passwort vertraulich.Der Empfänger der Mail benötigt das Passwort zum entschlüsseln des zensierten Textes." src="{% static "images/1481561122_Help_and_Support.png" %}" height="25"/>#}
+{#   <input type= "text" class="form-control" value="{{pssform}}">#}
+{#    </br>#}
+    {{ btn | safe }}
+{#    <input type="submit" style="float: right"  class="btn btn-primary" value="Verschlüsseln" name="_encrypt" />#}
     </br>
     </br>
 </form>

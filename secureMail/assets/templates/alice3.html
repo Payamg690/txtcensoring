@@ -2,8 +2,14 @@
 {% block title %}alice3{% endblock %}
   {% block content %}
   <div class="jumbotron">
-  	<p class="lead">{{ didi }}</p>
+      <p class="lead">{{ didi }}</p> <p>{{ Email }}</p></br>
+      <p>that's your password!</p></br>
+      <input type="text" class="form-control" style="color: green" value="{{ pssform }}">
+      </br></br><p>that's your encrypted text:</p>
+      </br><textarea class="form-control">{{ cyTXT }}</textarea>
+      </br><a href="bob1.html">link to Plaintext</a>
   	<p class="lead">Hinweis: Bitte vergessen Sie nicht das Passwort dem Empfänger zur Entschlüsselung mitzuteilen.</p>
+  	<!--<input type= "text" class="form-control" value="{{pssform}}">-->
 	<!--<p class="lead"></p>        <p><a class="btn btn-lg btn-success" href=" {% url 'bob1' %}" role="button" >decrypt your text</a></p>-->
   </div>
 {% endblock %}

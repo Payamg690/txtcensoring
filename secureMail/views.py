@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.shortcuts import render_to_response
@@ -29,7 +30,11 @@ def alice2(request):
             print sr1
             sr2 = censorTextFinal(sr1)
             #txt = bs(sr2, "lxml").p.string
-            return render(request, 'alice2.html', {'form': p, 'pssform': ps, 'didi': sr2})
+
+            Email = ""
+            Betreff = p.cleaned_data['Betreff']
+            #saveMessage(sr1, ps, Betreff, Email)
+            return render(request, 'alice2.html', {'btn': "<input type='submit' style='float: right'  class='btn btn-primary' value='Verschlüsseln' name='_encrypt' />", 'form': p, 'pssform': ps, 'didi': sr2, 'link': "<a href='http://127.0.0.1:8000/secureMail/bob1'>Plaintext</a>"})
         elif '_encrypt' in request.POST:
             p = NachrichtForm(request.POST)
             if p.is_valid():
@@ -44,9 +49,12 @@ def alice2(request):
             # sending the email
             #send_mail('Text Encryption - ' + Betreff, 'this is the password', 'test@test.de', email_list,
             #         fail_silently=False, html_message=html_message)
-
-            return render(request, 'alice2.html',
-                          {'form': form, 'pssform': ps, 'didi': "Der Prozess ist erfolgreich abgeschlossen.", 'link': "<a href='http://127.0.0.1:8000/secureMail/bob1'>the link to bob 1</a>"})
+            query = ""
+            query = Message.objects.get(pwd=ps)
+            cyTXT = query.__getattribute__('cyphertext')
+            print cyTXT
+            return render(request, 'alice3.html',
+                          {'cyTXT': cyTXT,'form': form, 'pssform': ps, 'didi': "Der Prozess ist erfolgreich abgeschlossen.", 'link': "<a href='http://127.0.0.1:8000/secureMail/bob1'>the link to bob 1</a>"})
 
     return render(request, 'alice2.html', {'form': form, 'didi': txt})
 
